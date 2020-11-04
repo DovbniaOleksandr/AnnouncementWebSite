@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CardAnnouncementViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model.Any())
+{
+    <div class="card-deck row">
+        @foreach (var announcement in Model)
+        {
+            <partial name="AnnouncementCard" for="@announcement" />
+        }
+    </div>
+}
+else
+{
+    <h3 class="m-1 text-center">There are no announcements.</h3>
+}

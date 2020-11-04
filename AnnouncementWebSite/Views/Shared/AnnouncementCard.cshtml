@@ -1,0 +1,25 @@
+﻿@model CardAnnouncementViewModel
+
+<div class="col-md-4">
+    <div class="card mb-4 border-dark">
+        <div class="card-body">
+            <div>
+                <h5 class="card-title">@Model.Title</h5>
+            </div>
+            <p class="card-text">@Model.ShortDescription</p>
+            <div class="text-center">
+                <a asp-controller="Announcements" asp-action="GetById" asp-route-id="@Model.Id"
+                   class="btn btn-outline-primary m-1" id="BikeCardBtn">View</a>
+                <a asp-controller="Announcements" asp-action="Edit" asp-route-id="@Model.Id"
+                       class="btn btn-outline-secondary m-1" id="BikeCardBtn">Edit</a>
+                <form method="post" asp-controller="Announcements" asp-action="Delete" asp-route-id="@Model.Id" style="display: inline">
+                    <button type="submit" class="btn btn-outline-danger m-1" id="BikeCardBtn"
+                            onclick="return confirm('Are you sure you want to delete announcement : @Model.Title')">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
