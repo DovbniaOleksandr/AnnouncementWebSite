@@ -134,8 +134,8 @@ namespace AnnouncementWebSite.Controllers
             List<Announcement> res = new List<Announcement>();
             foreach (var ann in _announcementRepo.GetList().Where(a => a.Id != announcement.Id))
             {
-                if (ann.Description.ToLower().Split(' ').Intersect(announcement.Description.ToLower().Split(' ')).Count() != 0 &&
-                    ann.Title.ToLower().Split(' ').Intersect(announcement.Title.ToLower().Split(' ')).Count() != 0)
+                if (ann.Description.ToLower().Split(' ').Where(w => w.Length > 3).Intersect(announcement.Description.ToLower().Split(' ').Where(w => w.Length > 3)).Count() != 0 &&
+                    ann.Title.ToLower().Split(' ').Where(w => w.Length > 3).Intersect(announcement.Title.ToLower().Split(' ').Where(w => w.Length > 3)).Count() != 0)
                 {
                     res.Add(ann);
                 }
